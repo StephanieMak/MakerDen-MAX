@@ -1,0 +1,5 @@
+﻿using (SensorMemory memory = new SensorMemory(5000, "mem01"))
+{
+    memory.OnAfterMeasurement += OnAfterMeasurement;
+    Util.Delay(Timeout.Infinite);
+}

@@ -1,0 +1,19 @@
+﻿using (SensorTemp temp = new SensorTemp(adc, Timeout.Infinite, "temp01"))
+using (SensorLight light = new SensorLight(adc, Timeout.Infinite, "light01"))
+{
+    while (true)
+    {
+		var message = $"T:{Math.Round(temp.Current, 1)}C";
+        Display(message);  // Display temp on matrix
+
+        if (light.Current > LIGHT_THRESHOLD)
+        {
+            ExplorerLedGreen.On();
+        }
+        else
+        {
+            ExplorerLedGreen.Off();
+        }
+        Util.Delay(500);
+    }
+}

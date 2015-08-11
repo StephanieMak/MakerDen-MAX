@@ -1,0 +1,13 @@
+﻿using (SensorTemp temp = new SensorTemp(adc, 4000, "temp01"))       // sample every 4000 milliseconds
+using (SensorLight light = new SensorLight(adc, 2000, "light01"))   // sample every 2000 milliseconds
+{
+    //Enable data publishing
+    temp.OnBeforeMeasurement += OnBeforeMeasure;
+    temp.OnAfterMeasurement += OnAfterMeasurement;
+
+    light.OnBeforeMeasurement += OnBeforeMeasure;
+    light.OnAfterMeasurement += OnAfterMeasurement;
+    light.OnAfterMeasurement += SetLEDMatrixBrightness;
+
+    Util.Delay(Timeout.Infinite);
+}

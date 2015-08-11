@@ -1,0 +1,23 @@
+﻿// create a new instance of the SensorLight class that auto-disposes when you're done with it
+using (SensorLight light = new SensorLight(adc, Timeout.Infinite, "light01"))
+{
+    // keep looping until the plug is pulled - this is a very common IoT pattern
+    while (true)
+    {
+        // this is simply so we can break and see the value
+        var level = light.Current;
+
+        // if the light level is above a certain level
+        if (level > LIGHT_THRESHOLD) 
+        {
+            Display(AdafruitMatrix.Adafruit8x8Matrix.Symbols.HappyFace);  // Happy Face
+            ExplorerLedGreen.On(); // turn on the green LED on the Explorer HAT
+        }
+        else
+        {
+            Display(AdafruitMatrix.Adafruit8x8Matrix.Symbols.SadFace);  // Sad face
+            ExplorerLedGreen.Off(); // turn off the green LED on the Explorer HAT
+        }
+        Util.Delay(500);
+    }
+}

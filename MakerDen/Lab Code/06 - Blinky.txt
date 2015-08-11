@@ -1,0 +1,14 @@
+﻿while (true)
+{
+    ExplorerLedGreen.On();
+    ExplorerLedRed.Off();
+    Display(AdafruitMatrix.Adafruit8x8Matrix.Symbols.HappyFace);
+
+    Util.Delay(1000);
+
+    ExplorerLedGreen.Off();
+    ExplorerLedRed.On();
+    Display(AdafruitMatrix.Adafruit8x8Matrix.Symbols.SadFace);
+
+    Util.Delay(1000);
+}
